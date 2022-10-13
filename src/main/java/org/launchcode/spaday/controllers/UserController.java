@@ -1,9 +1,10 @@
 package org.launchcode.spaday.controllers;
 
+import org.launchcode.spaday.data.UserData;
+import org.launchcode.spaday.models.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("user")
@@ -14,4 +15,12 @@ public class UserController {
         return "user/add";
     }
 
+    @PostMapping("add")
+    public String processAddUserForm(Model model, @ModelAttribute User user, String verify) {
+        UserData.add(user);
+        model.addAttribute("user", user);
+        if (user.getPassword()!=verify) {
+            return "redirect:";
+        } else {return "redirect:index/";}
+    }
 }
