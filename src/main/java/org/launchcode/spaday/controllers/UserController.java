@@ -11,7 +11,7 @@ public class UserController {
 
     @GetMapping("add")
    public String displayAddUserForm(){
-        return "add";
+        return "user/add";
     }
 
 }
