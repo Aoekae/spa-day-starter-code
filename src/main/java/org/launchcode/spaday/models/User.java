@@ -12,9 +12,13 @@ public class User {
     private String password;
     private String passwordValidation;
 
-    public User(String username, String email, String password, String passwordValidation) {
+    public User(){
         this.id=nextID;
         nextID++;
+    }
+
+    public User(String username, String email, String password, String passwordValidation) {
+        this();
         this.username = username;
         this.email = email;
         this.password = password;
